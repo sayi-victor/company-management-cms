@@ -59,7 +59,7 @@
         </div>
     </form>
     <script>  
-    const amount = document.getElementById('totalAmount');
-    const elem = new AutoNumeric(amount);    
+        const amount = document.getElementById('totalAmount');
+        const elem = new AutoNumeric(amount);    
     </script>
     <?= $this->endSection() ?>

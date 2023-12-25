@@ -26,30 +26,10 @@
                 <span class="text-red-500"><?=$errors['vat_number']?></span>
             <?php } ?>
         </div>
-        <label for="currencyInput">Enter Currency:</label>
-  <input type="text" id="currencyInput" oninput="formatCurrency(this)">
-  
         <div class="text-center">
             <button type="submit" class="bg-blue-500 text-white py-2 px-4 w-1/2 rounded font-semibold hover:bg-blue-600 focus:outline-none">
                 Add Company
             </button>
         </div>
     </form>
-    <script>
-    function formatCurrency(input) {
-      // Get the input value and remove non-numeric characters
-      let value = input.value.replace(/[^\d.]/g, '');
-
-      // Split the value into whole and decimal parts
-      let parts = value.split('.');
-      let wholePart = parts[0];
-      let decimalPart = parts[1] ? '.' + parts[1] : '';
-
-      // Format the whole part of the number
-      wholePart = wholePart.replace(/\B(?=(\d{3})+(?!\d))/g, ',');
-
-      // Update the input value with formatted currency
-      input.value = wholePart + decimalPart;
-    }
-  </script>
 <?= $this->endSection() ?>
