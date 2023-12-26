@@ -18,7 +18,7 @@ class CreateCompaniesTable extends Migration
                 'constraint' => 255
             ],
             'vat_number' => [
-                'type' => 'BIGINT',
+                'type' => 'VARCHAR',
                 'constraint' => 255
             ],
             'address' => [

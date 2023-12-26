@@ -8,4 +8,12 @@ class Home extends BaseController
     {
         return view('home');
     }
+
+    /**
+     * return error 404
+     */
+    public function lost()
+    {
+        return view('errors/404');
+    }
 }

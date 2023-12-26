@@ -16,8 +16,6 @@ use App\Controllers\AuthController;
 $routes->get('/login', [AuthController::class, 'loginView'], ['as' => 'auth.login', 'filter' => 'guest']);
 $routes->post('/login', [AuthController::class, 'login'], ['as' => 'auth.login.request', 'filter' => 'guest']);
 $routes->post('/logout', [AuthController::class, 'logout'], ['as' => 'auth.logout.request']);
-$routes->get('/register', [AuthController::class, 'registerView'], ['as' => 'auth.register', 'filter' => 'guest']);
-$routes->post('/register', [AuthController::class, 'register'], ['as' => 'auth.register.request', 'filter' => 'guest']);
 
 $routes->get('/', 'Home::index', ['as' => 'home']);
 

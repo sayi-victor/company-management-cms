@@ -1,4 +1,4 @@
-<header class="bg-[#002e62] text-gray-50 p-3 w-screen">
+<header class="bg-[rgb(0,46,98)] text-gray-50 p-3 w-screen">
 <nav class="flex flex-row justify-between px-6">
     <div class="logo flex flex-row flex-nowrap">
       <h3 class="uppercase font-2xl font-semibold mr-5 ">

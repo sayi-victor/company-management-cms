@@ -14,7 +14,7 @@ class CreatePaymentDetailsTable extends Migration
                 'auto_increment' => TRUE
             ],
             'company_id' => [
-                'type' => 'BIGINT',
+                'type' => 'VARCHAR',
                 'unsigned' => TRUE
             ],
             'contract_NrAtto' => [
@@ -22,7 +22,7 @@ class CreatePaymentDetailsTable extends Migration
                 'unsigned' => TRUE
             ],
             'funding_model_number' => [
-                'type' => 'BIGINT',
+                'type' => 'VARCHAR',
                 'unsigned' => TRUE
             ],
             'created_at' => [

@@ -29,7 +29,7 @@ class FundingModel extends Model
         'vsp'     => 'required',
         'op'     => 'required',
         'model_number'     => 'required|numeric|is_unique[fundings.model_number]',
-        'total_amount'  => 'required|max_length[12]',
+        'total_amount'  => 'required|max_length[20]',
         'allocation'     => 'required',
     ];
     protected $validationMessages   = [];

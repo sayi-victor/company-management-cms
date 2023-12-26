@@ -18,7 +18,8 @@ class CreateContractsTable extends Migration
                 'constraint' => 255
             ],
             'model_number' => [
-                'type' => 'INTEGER'
+                'type' => 'VARCHAR',
+                'constraint' => 255
             ],
             'st_app' => [
                 'type' => 'VARCHAR',
@@ -50,8 +51,8 @@ class CreateContractsTable extends Migration
                 'constraint' => 255
             ],
             'company' => [
-                'type' => 'BIGINT',
-                'contraint' => 5,
+                'type' => 'VARCHAR',
+                'contraint' => 255,
                 'unsigned' => TRUE
             ],
             'created_at' => [
@@ -70,7 +71,7 @@ class CreateContractsTable extends Migration
 
         $this->forge->addKey('code_es', true);
         $this->forge->addForeignKey('company', 'companies', 'vat_number', 'CASCADE');
-        $this->forge->addForeignKey('model_number', 'fundings', 'id', 'CASCADE');
+        $this->forge->addForeignKey('model_number', 'fundings', 'model_number', 'CASCADE');
         $this->forge->createTable('contracts');
     }
 

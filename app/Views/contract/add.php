@@ -37,7 +37,7 @@
                 <?php
                     if (isset($fundings) && count($fundings) > 0) { 
                         foreach ($fundings as $funding) { ?>
-                        <option value="<?=$funding['id']?>"> <?=$funding['model_number']?> </option>
+                        <option value="<?=$funding['model_number']?>"> <?=$funding['model_number']?> </option>
                         <?php
                         }
                     }
@@ -128,6 +128,6 @@
     </form>
     <script>  
         const amount = document.getElementById('contractValue');
-        const elem = new AutoNumeric(amount);    
+        const elem = new AutoNumeric(amount).french();    
     </script>
 <?= $this->endSection() ?>

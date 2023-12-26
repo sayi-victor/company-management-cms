@@ -22,9 +22,9 @@ class CreateFundingTable extends Migration
                 'constraint' => 255
             ],
             'model_number' => [
-                'type' => 'INT',
+                'type' => 'VARCHAR',
                 'unique' => TRUE,
-                'constraint' => 11
+                'constraint' => 255
             ],
             'total_amount' => [
                 'type' => 'VARCHAR',

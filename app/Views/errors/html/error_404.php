@@ -2,83 +2,18 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title><?= lang('Errors.pageNotFound') ?></title>
-
-    <style>
-        div.logo {
-            height: 200px;
-            width: 155px;
-            display: inline-block;
-            opacity: 0.08;
-            position: absolute;
-            top: 2rem;
-            left: 50%;
-            margin-left: -73px;
-        }
-        body {
-            height: 100%;
-            background: #fafafa;
-            font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-            color: #777;
-            font-weight: 300;
-        }
-        h1 {
-            font-weight: lighter;
-            letter-spacing: normal;
-            font-size: 3rem;
-            margin-top: 0;
-            margin-bottom: 0;
-            color: #222;
-        }
-        .wrap {
-            max-width: 1024px;
-            margin: 5rem auto;
-            padding: 2rem;
-            background: #fff;
-            text-align: center;
-            border: 1px solid #efefef;
-            border-radius: 0.5rem;
-            position: relative;
-        }
-        pre {
-            white-space: normal;
-            margin-top: 1.5rem;
-        }
-        code {
-            background: #fafafa;
-            border: 1px solid #efefef;
-            padding: 0.5rem 1rem;
-            border-radius: 5px;
-            display: block;
-        }
-        p {
-            margin-top: 1.5rem;
-        }
-        .footer {
-            margin-top: 2rem;
-            border-top: 1px solid #efefef;
-            padding: 1em 2em 0 2em;
-            font-size: 85%;
-            color: #999;
-        }
-        a:active,
-        a:link,
-        a:visited {
-            color: #dd4814;
-        }
-    </style>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Content management system">
+    <title><?= $_ENV['app.name'] ?> | 404 - Page Not Found</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <link  rel="stylesheet" type="text/css" href="<?=base_url('assets/css/style.css')?>">
 </head>
-<body>
-    <div class="wrap">
-        <h1>404</h1>
-
-        <p>
-            <?php if (ENVIRONMENT !== 'production') : ?>
-                <?= nl2br(esc($message)) ?>
-            <?php else : ?>
-                <?= lang('Errors.sorryCannotFind') ?>
-            <?php endif ?>
-        </p>
+<body class="flex flex-col justify-center items-center min-h-screen">
+    <div class="text-center">
+        <h1 class="text-6xl font-bold text-gray-800">404</h1>
+        <p class="text-2xl text-gray-600 mb-4">Oops! Page not found</p>
+        <p class="text-gray-500 mb-8">The page you are looking for might have been removed or is temporarily unavailable.</p>
+        <a href="/" class="px-6 py-3 bg-blue-500 text-white font-semibold rounded-lg shadow-md hover:bg-blue-600 transition duration-300"><i class="fas fa-house"></i>Take me home</a>
     </div>
 </body>
 </html>

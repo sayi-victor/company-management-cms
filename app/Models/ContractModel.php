@@ -29,11 +29,11 @@ class ContractModel extends Model
     protected $validationRules      = [
         'company' => 'required|numeric',
         'code_es' => 'required|max_length[30]|alpha_numeric_space',
-        'model_number' => 'required|max_length[30]|numeric',
+        'model_number' => 'required|max_length[30]|alpha_numeric_space',
         'st_app' => 'required|max_length[30]|alpha_numeric_space',
         'cig' => 'required|max_length[30]|alpha_numeric_space',
         'nr_atto' => 'required|max_length[30]|alpha_numeric_space',
-        'contract_value' => 'required|max_length[12]|numeric',
+        'contract_value' => 'required|max_length[20]',
         'annualities' => 'required|max_length[30]|alpha_numeric_space',
         'installment_years' => 'required|max_length[30]|numeric',
         'scelta_contraente' => 'required|max_length[30]',

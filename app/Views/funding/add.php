@@ -51,7 +51,6 @@
                 <span class="text-red-500"><?=$errors['allocation']?></span>
             <?php } ?>
         </div>
-        <input type="text" name="someName" id="someID" value="1234.56" data-an-default="1234.56" >
         <div class="text-center">
             <button type="submit" class="bg-blue-500 text-white py-2 px-4 w-1/2 rounded font-semibold hover:bg-blue-600 focus:outline-none">
                 Add Funding
@@ -60,6 +59,6 @@
     </form>
     <script>  
         const amount = document.getElementById('totalAmount');
-        const elem = new AutoNumeric(amount);    
+        const elem = new AutoNumeric(amount).french();    
     </script>
     <?= $this->endSection() ?>
