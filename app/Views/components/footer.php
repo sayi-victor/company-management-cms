@@ -30,4 +30,11 @@
     <p> All Rights Reserved </p>
   </div>
 </footer>
-<script src="<?=base_url('assets/js/app.js')?>"></script>
+<script>
+  const toggleBtn = document.getElementById('toggle-logout');
+  const logoutForm = document.getElementById('logout-form');
+
+  toggleBtn.addEventListener('click', () => {
+    logoutForm.classList.toggle('hidden');
+  });
+</script>

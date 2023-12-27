@@ -10,6 +10,19 @@ use App\Models\ContractModel as Contract;
 
 class PaymentController extends BaseController
 {
+    protected $companies;
+    protected $fundings;
+    protected $contracts;
+
+    public function __construct()
+    {
+        $company = new Company;
+        $this->companies = $company->findAll();
+        $funding = new Funding;
+        $this->fundings = $funding->findAll();
+        $contract =  new Contract;
+        $this->contracts = $contract->findAll();
+    }
     /**
      * Diplay all payments view
      */
@@ -26,17 +39,10 @@ class PaymentController extends BaseController
     */
     public function addView()
     {
-        $company = new Company;
-        $companies = $company->findAll();
-        $funding = new Funding;
-        $fundings = $funding->findAll();
-        $contract =  new Contract;
-        $contracts = $contract->findAll();
-
         return view('payment/add', [
-            'companies' => $companies,
-            'fundings' => $fundings,
-            'contracts' => $contracts
+            'companies' => $this->companies,
+            'fundings' => $this->fundings,
+            'contracts' => $this->contracts
         ]);
     }
 
@@ -45,22 +51,42 @@ class PaymentController extends BaseController
      */
     public function AddAction()
     {
+        helper (['form']);
         if (! $this->request->is('post')) {
             return redirect()->to('/add-payment');
         }
         
         $payment = new Payment;
+        $funding = new Funding;
+        
         $data = [
-            'company_id' => $this->request->getVar('company'),
-            'contract_NrAtto' => $this->request->getVar('contract'),
-            'funding_model_number' => $this->request->getVar('funding')
+            'company_id' => $this->request->getVar('company_id'),
+            'contract_NrAtto' => $this->request->getVar('contract_NrAtto'),
+            'funding_model_number' => $this->request->getVar('funding_model_number'),
+            'amount' => $this->request->getVar('amount')
         ];
+
+        $fund = $funding->where('model_number', $this->request->getVar('funding_model_number'))->first();
+        $funding_bal = $this->cleanCurrency($fund['total_amount']) - $this->cleanCurrency($this->request->getVar('amount'));
+        $data['funding_balance'] = $funding_bal;
 
         $saved = $payment->insert($data);
         if ($saved == true) {
             return redirect()->to('/payments');
         } else {
-            return view('payment/add', ['errors' => $payment->errors()]);
+            return view('payment/add', [
+                'errors' => $payment->errors(),
+                'companies' => $this->companies,
+                'fundings' => $this->fundings,
+                'contracts' => $this->contracts
+            ]);
         }
+    }
+
+    protected function cleanCurrency($currency) {
+        $cleanedValue = preg_replace('/[^\d,]/', '', $currency); 
+        $numericValue = str_replace(',', '.', str_replace('.', '', $cleanedValue));
+
+        return $numericValue;
     }
 }

@@ -48,7 +48,7 @@
   </table>
   <?php } 
    if (count($fundings) == 0) {
-    echo 'You have no funding';
+    echo 'No fundings found';
   } ?>
 </div>
 <?= $this->endSection() ?>

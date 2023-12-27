@@ -1,13 +1,10 @@
 <?= $this->extend('layouts/app') ?>
 <?= $this->section('content') ?>
 <h2 class="text-2xl font-semibold text-center mb-6"> Add Payment </h2>
-<?php if (isset($errors)) {
-    print(var_dump($errors));
-} ?>
     <form method="post" class="max-w-md mx-auto bg-white p-4 rounded shadow-md">
     <div class="mb-4">
         <label for="company" class="block font-semibold mb-1"> Company </label>
-        <select name="company" id=""
+        <select name="company_id"  required
             class="w-full p-2 border border-gray-300 rounded focus:outline-none focus:border-blue-500">
             <option value=""> Choose Company</option>
             <?php
@@ -17,13 +14,13 @@
             <?php
                 }}     ?>
             </select>
-            <?php if (isset($errors['company'])) { ?>
-                <span class="text-red-500"><?=$errors['company']?></span>
+            <?php if (isset($errors['company_id'])) { ?>
+                <span class="text-red-500"><?=$errors['company_id']?></span>
             <?php } ?>
         </div>
         <div class="mb-4">
         <label for="contract" class="block font-semibold mb-1"> Contract </label>
-        <select name="contract" id="contract"
+        <select name="contract_NrAtto" id="contract" required
             class="w-full p-2 border border-gray-300 rounded focus:outline-none focus:border-blue-500">
             <option value=""> Choose Contract</option>
             <?php
@@ -33,13 +30,13 @@
             <?php
                 }}     ?>
             </select>
-            <?php if (isset($errors['contract'])) { ?>
-                <span class="text-red-500"><?=$errors['contract']?></span>
+            <?php if (isset($errors['contract_NrAtto'])) { ?>
+                <span class="text-red-500"><?=$errors['contract_NrAtto']?></span>
             <?php } ?>
         </div>
         <div class="mb-4">
         <label for="funding" class="block font-semibold mb-1"> Funding </label>
-        <select name="funding" id="funding"
+        <select name="funding_model_number" id="funding" required
             class="w-full p-2 border border-gray-300 rounded focus:outline-none focus:border-blue-500">
             <option value=""> Choose Funding</option>
             <?php
@@ -49,8 +46,16 @@
             <?php
                 }}     ?>
             </select>
-            <?php if (isset($errors['funding'])) { ?>
-                <span class="text-red-500"><?=$errors['funding']?></span>
+            <?php if (isset($errors['funding_model_number'])) { ?>
+                <span class="text-red-500"><?=$errors['funding_model_number']?></span>
+            <?php } ?>
+        </div>
+        <div class="mb-4">
+            <label for="amount" class="block font-semibold mb-1"> Amount </label>
+            <input type="text" id="amount" name="amount" required
+                class="w-full p-2 border border-gray-300 rounded focus:outline-none focus:border-blue-500">
+            <?php if (isset($errors['amount'])) { ?>
+                <span class="text-red-500"><?=$errors['amount']?></span>
             <?php } ?>
         </div>
         <div class="text-center">
@@ -59,4 +64,8 @@
             </button>
         </div>
     </form>
+    <script>  
+        const amount = document.getElementById('amount');
+        const elem = new AutoNumeric(amount).french();    
+    </script>
     <?= $this->endSection() ?>

@@ -16,7 +16,9 @@ class PaymentModel extends Model
     protected $allowedFields    = [
         'company_id', 
         'contract_NrAtto',
-        'funding_model_number'
+        'funding_model_number',
+        'amount',
+        'funding_balance'
     ];
 
     // Dates
@@ -30,10 +32,21 @@ class PaymentModel extends Model
     protected $validationRules      = [
         'company_id' => 'required',
         'contract_NrAtto' => 'required',
-        'funding_model_number' => 'required'
+        'funding_model_number' => 'required',
+        'amount' => 'required'
     ];
 
-    protected $validationMessages   = [];
+    protected $validationMessages   = [
+        'company_id' => [
+            'required' => 'Please select company'
+        ],
+        'contract_NrAtto' => [
+            'required' => 'Please select contract'
+        ],
+        'funding_model_number' => [
+            'required' => 'Please select funding'
+        ]
+    ];
     protected $skipValidation       = false;
     protected $cleanValidationRules = true;
 

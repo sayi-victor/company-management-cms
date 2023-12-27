@@ -25,6 +25,14 @@ class CreatePaymentDetailsTable extends Migration
                 'type' => 'VARCHAR',
                 'unsigned' => TRUE
             ],
+            'amount' => [
+                'type' => 'VARCHAR',
+                'constraint' => 255
+            ],
+            'funding_balance' => [
+                'type' => 'VARCHAR',
+                'constraint' => 255
+            ],
             'created_at' => [
                 'type' => 'TIMESTAMP',
                 'null' => TRUE,

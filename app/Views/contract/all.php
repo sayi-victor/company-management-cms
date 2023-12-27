@@ -2,6 +2,7 @@
 <?= $this->section('content') ?>
 <div class="overflow-x-auto rounded-md p-10 bg-white">
   <h1 class="text-xl mb-2 font-medium"> All contracts </h1>
+  <?php if (count($contracts) > 0 ) { ?>
   <table class="min-w-full border-collapse border border-gray-300">
     <thead>
       <tr>
@@ -34,5 +35,9 @@
     <?php }?>
     </tbody>
   </table>
+  <?php } 
+   if (count($contracts) == 0) {
+    echo 'No contracts found';
+  } ?>
 </div>
 <?= $this->endSection() ?>
