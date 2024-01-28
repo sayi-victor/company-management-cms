@@ -38,7 +38,7 @@ class AuthController extends BaseController
             'username' => $this->validator->getValidated()['username'],
             'email' => $this->validator->getValidated()['email'],
             'role' => 'user',
-            'password' => password_hash($this->validator->getValidated()['password'], PASSWORD_DEFAULT),
+            'password' => $this->validator->getValidated()['password']
         ]);
 
         if($saved == true) {
@@ -71,7 +71,7 @@ class AuthController extends BaseController
             ]);
         }
 
-        if (password_verify($password, $user['password'])) {
+        if ($password == $user['password']) {
             $session = session();
             $session->set($user);
 

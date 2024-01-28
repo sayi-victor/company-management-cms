@@ -17,12 +17,17 @@
     </div>
     <?php $session = session();
     if ($session->has('id')) { ?>
-    <button id="toggle-logout" class="bg-blue-700 hover:bg-blue-800 text-white p-2 rounded">
-      Welcome, <?=$session->get('username')?>
-    </button>
+    <div class="flex flex-row gap-x-2">
+      <p  class="text-white p-2 font-semibold rounded">
+        Welcome, <?=$session->get('username')?>
+    </p>
+      <form class="" id="logout-form" action="<?= site_url('logout')?>" method="post">
+        <button type="submit" class="bg-blue-600 text-center w-full text-white py-2 px-4 rounded font-semibold hover:bg-blue-700 focus:outline-none"> <i class="fas mr-2 fa-power-off"></i>Logout </button>
+      </form>
+    </div>
   </nav>
   <form class="logout hidden" id="logout-form" action="<?= site_url('logout')?>" method="post">
-  <button type="submit" class="bg-blue-500 text-center w-full text-white py-2 px-4 rounded font-semibold hover:bg-blue-600 focus:outline-none"> <i class="fas mr-2 fa-power-off"></i>Logout </button>
+    <button type="submit" class="bg-blue-500 text-center w-full text-white py-2 px-4 rounded font-semibold hover:bg-blue-600 focus:outline-none"> <i class="fas mr-2 fa-power-off"></i>Logout </button>
   </form>
   <?php } ?>
 </header>

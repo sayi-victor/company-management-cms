@@ -28,8 +28,22 @@ class PaymentController extends BaseController
      */
     public function index() 
     {
-        $payment = new Payment;
-        $payments = $payment->findAll();
+        $raw_payment = new Payment;
+        $raw_payments = $raw_payment->findAll();
+
+        $payments = [];
+        
+        foreach ($raw_payments as $raw_payment) {
+            $payment['contract_NrAtto'] =  $raw_payment['contract_NrAtto'];
+            $payment['funding_model_number'] =  $raw_payment['funding_model_number'];
+            $payment['amount'] =  $raw_payment['amount'];
+            $payment['funding_balance'] =  $raw_payment['funding_balance'];
+            $company = new Company;
+            $company = $company->find($raw_payment['company_id']);
+            $payment['company_name'] = $company['name'];
+            $payment['company_vat'] = $company['vat_number'];
+            array_push($payments, $payment);
+        }
 
         return view('payment/all', ['payments' => $payments]);
     }
@@ -68,7 +82,7 @@ class PaymentController extends BaseController
 
         $fund = $funding->where('model_number', $this->request->getVar('funding_model_number'))->first();
         $funding_bal = $this->cleanCurrency($fund['total_amount']) - $this->cleanCurrency($this->request->getVar('amount'));
-        $data['funding_balance'] = $funding_bal;
+        $data['funding_balance'] = str_replace('.',',',$funding_bal).'€';
 
         $saved = $payment->insert($data);
         if ($saved == true) {

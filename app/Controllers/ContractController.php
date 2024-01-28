@@ -14,11 +14,8 @@ class ContractController extends BaseController
     * Diplay all contracts view
     */
     public function index()
-    {
-        $contract = new Contract;
-        $contracts = $contract->findAll();
-    
-        return view('contract/all', ['contracts' => $contracts]);
+    {    
+        return view('contract/all', ['contracts' => $this->contracts()]);
     }
 
     /**
@@ -77,5 +74,31 @@ class ContractController extends BaseController
             ]);
         }
 
+    }
+
+    protected function contracts() 
+    {
+        $raw_contract = new Contract;
+        $raw_contracts = $raw_contract->findAll();
+
+        $contracts = [];
+        foreach ($raw_contracts as $x) {
+            $contract['code_es'] = $x['code_es'] ;
+            $contract['model_number'] = $x['model_number'] ;
+            $contract['st_app'] = $x['st_app'] ;
+            $contract['cig'] = $x['cig'] ;
+            $contract['nr_atto'] = $x['nr_atto'] ;
+            $contract['contract_value'] = $x['contract_value'];
+            $contract['annualities'] = $x['annualities'];
+            $contract['scelta_contraente'] = $x['scelta_contraente'];
+            $contract['installment_years'] = $x['installment_years'];
+            $company = new Company;
+            $company = $company->find($x['company']);
+            $contract['company_name'] = $company['name'];
+            $contract['company_vat'] = $company['vat_number'];
+            array_push($contracts, $contract);
+        }
+
+        return $contracts;
     }
 }

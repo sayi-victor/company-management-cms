@@ -15,7 +15,8 @@
         <th class="px-4 py-2 bg-gray-200 border border-gray-300">Annualities</th>
         <th class="px-4 py-2 bg-gray-200 border border-gray-300">Installment Years</th>
         <th class="px-4 py-2 bg-gray-200 border border-gray-300">Scelta Contraente</th>
-        <th class="px-4 py-2 bg-gray-200 border border-gray-300">Company</th>
+        <th class="px-4 py-2 bg-gray-200 border border-gray-300">Company Name</th>
+        <th class="px-4 py-2 bg-gray-200 border border-gray-300">Company VAT</th>
       </tr>
     </thead>
     <tbody>
@@ -30,7 +31,8 @@
         <td class="px-4 py-2 border border-gray-300"><?=$contract['annualities']?></td>
         <td class="px-4 py-2 border border-gray-300"><?=$contract['installment_years']?></td>
         <td class="px-4 py-2 border border-gray-300"><?=$contract['scelta_contraente']?></td>
-        <td class="px-4 py-2 border border-gray-300"><?=$contract['company']?></td>
+        <td class="px-4 py-2 border border-gray-300"><?=$contract['company_name']?></td>
+        <td class="px-4 py-2 border border-gray-300"><?=$contract['company_vat']?></td>
       </tr>
     <?php }?>
     </tbody>
